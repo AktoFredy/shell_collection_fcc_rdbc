@@ -1,0 +1,250 @@
+camper: /project$ psql --username=freecodecamp --dbname=postgres
+psql: error: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+        Is the server running on that host and accepting TCP/IP connections?
+camper: /project$ psql --username=freecodecamp --dbname=postgres
+psql: error: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+        Is the server running on that host and accepting TCP/IP connections?
+camper: /project$ psql --username=freecodecamp --dbname=postgres
+psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=> \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges   
+-----------+----------+----------+---------+---------+-----------------------
+ postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 | 
+ template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+(3 rows)
+
+postgres=> CREATE DATABASE salon
+postgres-> ;
+CREATE DATABASE
+postgres=> \l
+                                List of databases
+   Name    |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   
+-----------+--------------+----------+---------+---------+-----------------------
+ postgres  | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | 
+ salon     | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 | 
+ template0 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |              |          |         |         | postgres=CTc/postgres
+ template1 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |              |          |         |         | postgres=CTc/postgres
+(4 rows)
+
+postgres=> \c salon
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "salon" as user "freecodecamp".
+salon=> CREATE TABLE customers(customer_id SERIAL PRIMARY KEY, phone VARCHAR(15) UNIQUE NOT NULL, name VARCHAR(30) NOT NULL);
+CREATE TABLE
+salon=> CREATE TABLE services(service_id SERIAL PRIMARY_KEY, name VARCHAR(30));
+ERROR:  syntax error at or near "PRIMARY_KEY"
+LINE 1: CREATE TABLE services(service_id SERIAL PRIMARY_KEY, name VA...
+                                                ^
+salon=> CREATE TABLE services(service_id SERIAL PRIMARY_KEY, name VARCHAR(30) NOT NULL);
+ERROR:  syntax error at or near "PRIMARY_KEY"
+LINE 1: CREATE TABLE services(service_id SERIAL PRIMARY_KEY, name VA...
+                                                ^
+salon=> CREATE TABLE services(service_id SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL);
+CREATE TABLE
+salon=> \D
+invalid command \D
+Try \? for help.
+salon=> \d
+                      List of relations
+ Schema |           Name            |   Type   |    Owner     
+--------+---------------------------+----------+--------------
+ public | customers                 | table    | freecodecamp
+ public | customers_customer_id_seq | sequence | freecodecamp
+ public | services                  | table    | freecodecamp
+ public | services_service_id_seq   | sequence | freecodecamp
+(4 rows)
+
+salon=> CREATE TABLE appointments(appointment_id SERIAL PRIMARY KEY, customer_id INT REFERENCES customers(customer_id) NOT NULL, service_id INT REFERENCES services(service_id) NOT NULL, time VARCHAR(8));
+CREATE TABLE
+salon=> \d appointments
+                                             Table "public.appointments"
+     Column     |         Type         | Collation | Nullable |                       Default                        
+----------------+----------------------+-----------+----------+------------------------------------------------------
+ appointment_id | integer              |           | not null | nextval('appointments_appointment_id_seq'::regclass)
+ customer_id    | integer              |           | not null | 
+ service_id     | integer              |           | not null | 
+ time           | character varying(8) |           |          | 
+Indexes:
+    "appointments_pkey" PRIMARY KEY, btree (appointment_id)
+Foreign-key constraints:
+    "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    "appointments_service_id_fkey" FOREIGN KEY (service_id) REFERENCES services(service_id)
+
+salon=> 
+INSERT 0 6
+
+=========================================== AFTER TRY NUM 2 ======================================================
+camper: /project$ psql -U postgres < salon.sql
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+ERROR:  database "salon" does not exist
+CREATE DATABASE
+ALTER DATABASE
+You are now connected to database "salon" as user "postgres".
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      6
+(1 row)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+camper: /project$ psql --username=freecodecamp --dbname=postgres
+psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=> \l
+                                List of databases
+   Name    |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   
+-----------+--------------+----------+---------+---------+-----------------------
+ postgres  | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | 
+ salon     | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 | 
+ template0 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |              |          |         |         | postgres=CTc/postgres
+ template1 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |              |          |         |         | postgres=CTc/postgres
+(4 rows)
+
+postgres=> \c salon 
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "salon" as user "freecodecamp".
+salon=> \d
+                         List of relations
+ Schema |              Name               |   Type   |    Owner     
+--------+---------------------------------+----------+--------------
+ public | appointments                    | table    | freecodecamp
+ public | appointments_appointment_id_seq | sequence | freecodecamp
+ public | customers                       | table    | freecodecamp
+ public | customers_customer_id_seq       | sequence | freecodecamp
+ public | services                        | table    | freecodecamp
+ public | services_service_id_seq         | sequence | freecodecamp
+(6 rows)
+
+salon=> SELECT * FROM SERVICE;
+ERROR:  relation "service" does not exist
+LINE 1: SELECT * FROM SERVICE;
+                      ^
+salon=> SELECT * FROM SERVICEs;
+ service_id |   name    
+------------+-----------
+          1 | Cut
+          2 | Color
+          3 | Perm
+          4 | Style
+          5 | Trim
+          6 | Bleaching
+(6 rows)
+
+salon=> \d customers
+                                          Table "public.customers"
+   Column    |         Type          | Collation | Nullable |                    Default                     
+-------------+-----------------------+-----------+----------+------------------------------------------------
+ customer_id | integer               |           | not null | nextval('customers_customer_id_seq'::regclass)
+ phone       | character varying(15) |           | not null | 
+ name        | character varying(30) |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+salon=> \d appointments
+                                             Table "public.appointments"
+     Column     |         Type         | Collation | Nullable |                       Default                        
+----------------+----------------------+-----------+----------+------------------------------------------------------
+ appointment_id | integer              |           | not null | nextval('appointments_appointment_id_seq'::regclass)
+ customer_id    | integer              |           | not null | 
+ service_id     | integer              |           | not null | 
+ time           | character varying(8) |           |          | 
+Indexes:
+    "appointments_pkey" PRIMARY KEY, btree (appointment_id)
+Foreign-key constraints:
+    "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    "appointments_service_id_fkey" FOREIGN KEY (service_id) REFERENCES services(service_id)
+
+salon=> SELECT name FROM customers WHERE phone = '5';
+ name 
+------
+(0 rows)
+
+salon=> SELECT * FROM appointments;
+ appointment_id | customer_id | service_id | time  
+----------------+-------------+------------+-------
+             23 |          26 |          1 | 10:30
+             24 |          26 |          2 | 11am
+(2 rows)

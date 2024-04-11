@@ -1,0 +1,149 @@
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+9
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+9
+
+data : 
+-e\nI could not find that service. What would you like today?
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+^C
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+9
+
+data : 
+
+I could not find that service. What would you like today?
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+1
+
+I could not find that service. What would you like today?
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+^C
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+9
+
+I could not find that service. What would you like today?
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+1
+
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+10
+
+I could not find that service. What would you like today?
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your  Cut, Fabio?
+10:30
+
+I have put you down for a  Cut at 10:30, Fabio.
+
+camper: /project$ ./salon.sh
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) Cut
+2) Color
+3) Perm
+4) Style
+5) Trim
+6) Bleaching
+2
+
+What's your phone number?
+555-555-5555
+
+What time would you like your  Color,  Fabio?
+11am
+
+I have put you down for a  Color at 11am,  Fabio.
+
+camper: /project$ pg_dump -cC --inserts -U freecodecamp salon > salon.sql
